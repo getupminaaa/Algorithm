@@ -9,7 +9,7 @@ private var homeMap = mutableListOf<Pair<Int, Int>>()
 private var chickenMap = mutableListOf<Pair<Int, Int>>()
 private var restaurants = mutableListOf<Pair<Int, Int>>()
 private var distance = 0
-private var distances = mutableListOf<Int>()
+private var minDistance = Int.MAX_VALUE
 
 fun main() = with(BufferedReader(InputStreamReader(System.`in`))) {
     val (n, m) = readLine().split(" ").map { it.toInt() }
@@ -20,13 +20,13 @@ fun main() = with(BufferedReader(InputStreamReader(System.`in`))) {
     }
     getCoordinate()
     getChickenDistance(m, -1)
-    println(distances.min())
+    println(minDistance)
 }
 
 fun getChickenDistance(m: Int, s: Int) {
     if (restaurants.size == m) {
         getMinDistance()
-        distances.add(distance)
+        minDistance = minOf(distance, minDistance)
         distance = 0
         return
     }
