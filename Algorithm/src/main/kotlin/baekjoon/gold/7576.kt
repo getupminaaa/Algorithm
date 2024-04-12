@@ -64,6 +64,6 @@ private fun bfs(starts: MutableList<Pair<Int, Int>>): Int {
             }
         }
     }
-    
+
     return ans
 }
